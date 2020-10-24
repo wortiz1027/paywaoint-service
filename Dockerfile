@@ -19,7 +19,7 @@ RUN mvn clean package -Dmaven.test.skip=true
 FROM adoptopenjdk:11-jre-hotspot
 
 ENV APP_HOME "/app"
-ENV HTTP_PORT 8090
+ENV HTTP_PORT 7071
 
 # Informacion de la persona que mantiene la imagen
 LABEL org.opencontainers.image.created=$BUILD_DATE \
@@ -31,8 +31,8 @@ LABEL org.opencontainers.image.created=$BUILD_DATE \
 	  org.opencontainers.image.revision=$BUILD_REVISION \
 	  org.opencontainers.image.vendor="Pontificia Universidad Javeriana | https://www.javeriana.edu.co/" \
 	  org.opencontainers.image.licenses="" \
-	  org.opencontainers.image.title="Reservas American Airline" \
-	  org.opencontainers.image.description="El siguiente servicio tiene como finalidad gestionar el proceso de reserva de vuelos para toures balon"
+	  org.opencontainers.image.title="Servicio que permite validar tarjeta de credito" \
+	  org.opencontainers.image.description="El siguiente servicio tiene como finalidad gestionar la informacion de tarjeta de credito y hacer el debito si tiene cupo"
 
 # Puerto de exposicion del servicio
 EXPOSE $HTTP_PORT
@@ -43,6 +43,6 @@ RUN mkdir $APP_HOME
 # Seteando el workspace
 WORKDIR $APP_HOME
 
-COPY --from=BUILDER /build/target/bookings-service.jar ${APP_HOME}
+COPY --from=BUILDER /build/target/paywoaint-service.jar ${APP_HOME}
 
-ENTRYPOINT ["java","-jar","/app/bookings-service.jar"]
+ENTRYPOINT ["java","-jar","/app/paywoaint-service.jar"]
