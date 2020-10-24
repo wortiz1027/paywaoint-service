@@ -1,0 +1,44 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://services.creditverifier.com/"
+        elementFormDefault="qualified"
+        xmlns:tns="http://services.creditverifier.com/"
+        xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:soap11-enc="http://schemas.xmlsoap.org/soap/encoding/"
+        xmlns:ns1="http://services.creditverifier.com/types/">
+    <import namespace="http://services.creditverifier.com/types/"/>
+    <complexType name="CreditCardValidationFaultMessage">
+        <sequence>
+            <element name="error" type="string" nillable="true"/>
+        </sequence>
+    </complexType>
+    <element name="chargeCreditCardElement">
+        <complexType>
+            <sequence>
+                <element name="cc" type="ns1:CreditCard" nillable="true"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="chargeCreditCardResponseElement">
+        <complexType>
+            <sequence>
+                <element name="result" type="boolean"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="CreditCardValidationFaultMessageElement" type="tns:CreditCardValidationFaultMessage"/>
+    <element name="verifyCreditCardElement">
+        <complexType>
+            <sequence>
+                <element name="cc" type="ns1:CreditCard" nillable="true"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="verifyCreditCardResponseElement">
+        <complexType>
+            <sequence>
+                <element name="result" type="boolean"/>
+            </sequence>
+        </complexType>
+    </element>
+</schema>

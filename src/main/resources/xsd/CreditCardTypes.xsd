@@ -1,0 +1,16 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://services.creditverifier.com/types/"
+        elementFormDefault="qualified"
+        xmlns:tns="http://services.creditverifier.com/types/"
+        xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:tns2="http://services.creditverifier.com/"
+        xmlns:soap11-enc="http://schemas.xmlsoap.org/soap/encoding/">
+    <import namespace="http://services.creditverifier.com/"/>
+    <complexType name="CreditCard">
+        <sequence>
+            <element name="type" type="string" nillable="true"/>
+            <element name="mount" type="double" nillable="true"/>
+            <element name="number" type="string" nillable="true"/>
+        </sequence>
+    </complexType>
+</schema>
