@@ -22,14 +22,17 @@ public class CreditServicesImpl implements CreditServices{
     @Override
     public VerifyCreditCardResponseElement validateCreditCard(VerifyCreditCardElement request) {
         VerifyCreditCardResponseElement response = new VerifyCreditCardResponseElement();
-        Optional<CreditCard> card = repository.findByCreditCardNumber(request.getCc().getNumber());
+        try {
+            Optional<CreditCard> card = repository.findByCreditCardNumber(request.getCc().getNumber());
 
-        if (card.isPresent()) {
-            response.setResult(Boolean.TRUE);
-        } else {
-            response.setResult(Boolean.TRUE);
+            if (card.isPresent()) {
+                response.setResult(Boolean.TRUE);
+            } else {
+                response.setResult(Boolean.TRUE);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
         return response;
     }
 
@@ -50,6 +53,7 @@ public class CreditServicesImpl implements CreditServices{
         card.setAmount(new BigDecimal(request.getCc().getMount()));
 
         if (card.getAmount().compareTo(existCard.get().getAmount()) <= 0) {
+            card.setAmount(existCard.get().getAmount().subtract(card.getAmount()));
             response.setResult(repository.chargeAmountCreditCard(card));
             return response;
         }

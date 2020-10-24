@@ -7,9 +7,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.ws.config.annotation.EnableWs;
 import org.springframework.ws.transport.http.MessageDispatcherServlet;
-import org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition;
-import org.springframework.xml.xsd.SimpleXsdSchema;
-import org.springframework.xml.xsd.XsdSchema;
+import org.springframework.ws.wsdl.wsdl11.SimpleWsdl11Definition;
+import org.springframework.ws.wsdl.wsdl11.Wsdl11Definition;
 
 @EnableWs
 @Configuration
@@ -20,22 +19,14 @@ public class WebServiceConfig {
         MessageDispatcherServlet messageDispatcherServlet = new MessageDispatcherServlet();
         messageDispatcherServlet.setApplicationContext(context);
         messageDispatcherServlet.setTransformWsdlLocations(true);
-        return new ServletRegistrationBean(messageDispatcherServlet, "/ws/*");
+        return new ServletRegistrationBean(messageDispatcherServlet, "/payments/ws/*");
     }
 
     @Bean(name = "CreditCardService")
-    public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema creditSchema) {
-        DefaultWsdl11Definition definition = new DefaultWsdl11Definition();
-        definition.setPortTypeName("CreditPort");
-        definition.setTargetNamespace("http://services.creditverifier.com/");
-        definition.setLocationUri("/ws");
-        definition.setSchema(creditSchema);
-        return definition;
-    }
-
-    @Bean
-    public XsdSchema creditSchema() {
-        return new SimpleXsdSchema(new ClassPathResource("xsd/CreditCard.xsd"));
+    public Wsdl11Definition wsdl11Definition(){
+        SimpleWsdl11Definition simpleWsdl11Definition = new SimpleWsdl11Definition();
+        simpleWsdl11Definition.setWsdl(new ClassPathResource("/wsdl/CreditCardService.wsdl"));
+        return simpleWsdl11Definition;
     }
 
 }

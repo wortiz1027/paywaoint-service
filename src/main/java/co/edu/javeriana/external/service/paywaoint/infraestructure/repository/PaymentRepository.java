@@ -7,13 +7,12 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
 
 @Repository
 @RequiredArgsConstructor
 public class PaymentRepository implements PayRepository {
 
-    private JdbcTemplate template;
+    private final JdbcTemplate template;
 
     @Override
     public Optional<CreditCard> findByCreditCardNumber(String number) {

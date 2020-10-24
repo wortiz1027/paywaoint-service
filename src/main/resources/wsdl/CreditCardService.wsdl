@@ -117,7 +117,7 @@
     </binding>
     <service name="CreditCardService">
         <port name="CreditCardServiceSoapHttpPort" binding="tns:CreditCardServiceSoapHttp">
-            <soap:address location="http://192.168.1.100:8888/TuresBalonProviders-CreditVerifier-context-root/CreditCardServiceSoapHttpPort"/>
+            <soap:address location="http://localhost:7071/payments/ws/CreditCardService"/>
         </port>
     </service>
 </definitions>
