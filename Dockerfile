@@ -24,9 +24,9 @@ ENV HTTP_PORT 7071
 # Informacion de la persona que mantiene la imagen
 LABEL org.opencontainers.image.created=$BUILD_DATE \
 	  org.opencontainers.image.authors="Brian Suarez | Eduardo Franco | Jhon Celemin | Wilman Ortiz Navarro " \
-	  org.opencontainers.image.url="https://gitlab.com/bcamilo/aa-service/-/blob/master/master/Dockerfile" \
+	  org.opencontainers.image.url="https://gitlab.com/bcamilo/paywaoint-service/-/blob/master/Dockerfile" \
 	  org.opencontainers.image.documentation="" \
-	  org.opencontainers.image.source="https://gitlab.com/bcamilo/aa-service/-/blob/master/master/Dockerfile" \
+	  org.opencontainers.image.source="https://gitlab.com/bcamilo/paywaoint-service/-/blob/master/Dockerfile" \
 	  org.opencontainers.image.version=$BUILD_VERSION \
 	  org.opencontainers.image.revision=$BUILD_REVISION \
 	  org.opencontainers.image.vendor="Pontificia Universidad Javeriana | https://www.javeriana.edu.co/" \

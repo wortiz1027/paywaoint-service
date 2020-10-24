@@ -17,15 +17,15 @@ public class CreditEndPoint {
 
     private final CreditServices services;
 
-    @PayloadRoot(namespace = "http://services.creditverifier.com/", localPart = "VerifyCreditCard")
+    @PayloadRoot(namespace = "http://services.creditverifier.com/", localPart = "VerifyCreditCardElement")
     @ResponsePayload
-    public VerifyCreditCardResponseElement getFlights(@RequestPayload VerifyCreditCardElement request) {
+    public VerifyCreditCardResponseElement verifyCreditCard(@RequestPayload VerifyCreditCardElement request) {
         return services.validateCreditCard(request);
     }
 
-    @PayloadRoot(namespace = "http://services.creditverifier.com/", localPart = "ChargeCreditCard")
+    @PayloadRoot(namespace = "http://services.creditverifier.com/", localPart = "ChargeCreditCardElement")
     @ResponsePayload
-    public ChargeCreditCardResponseElement getAllFlights(@RequestPayload ChargeCreditCardElement request) {
+    public ChargeCreditCardResponseElement chargeCreditCard(@RequestPayload ChargeCreditCardElement request) {
         return services.paymentCreditCard(request);
     }
 

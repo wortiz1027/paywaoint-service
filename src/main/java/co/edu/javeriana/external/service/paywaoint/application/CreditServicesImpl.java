@@ -1,5 +1,6 @@
 package co.edu.javeriana.external.service.paywaoint.application;
 
+//import co.edu.javeriana.external.service.paywaoint.domain.CreditCard;
 import co.edu.javeriana.external.service.paywaoint.domain.CreditCard;
 import co.edu.javeriana.external.service.paywaoint.infraestructure.repository.PayRepository;
 import co.edu.javeriana.external.service.paywaoint.infraestructure.wsdl.model.ChargeCreditCardElement;

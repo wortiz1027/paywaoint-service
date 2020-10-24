@@ -24,18 +24,26 @@ services:
     ports:
       - '33061:3306'
     volumes:
-      - ./src/main/resources/mysql-credit-card-information-v1.sql:/docker-entrypoint-initdb.d/mysql-credit-card-information-v1.sql
+      - ./src/main/resources/database/mysql-credit-card-information-v1.sql:/docker-entrypoint-initdb.d/mysql-credit-card-information-v1.sql
       - data_payments:/var/lib/mysql
     networks:
-      - ntw_databases
+      - ntw_backend
     deploy:
       resources:
         limits:
           cpus: '0.50'
           memory: 180M
+  paywoaint-service:
+    image: equipo5/paywoaint-service:latest
+    container_name: paywoaint-service
+    hostname: paywoaint-service
+    restart: always
+    ports:
+      - 7071:7071
+    networks:
+      - ntw_backend
 
 volumes:
-  data_payments
+  data_payments:
 networks:
-  ntw_databases:
-    external: true
+  ntw_backend:

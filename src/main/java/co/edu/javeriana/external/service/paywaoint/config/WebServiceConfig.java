@@ -23,18 +23,18 @@ public class WebServiceConfig {
         return new ServletRegistrationBean(messageDispatcherServlet, "/ws/*");
     }
 
-    @Bean(name = "CreditCard")
-    public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema CreditSchema) {
+    @Bean(name = "CreditCardService")
+    public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema creditSchema) {
         DefaultWsdl11Definition definition = new DefaultWsdl11Definition();
         definition.setPortTypeName("CreditPort");
         definition.setTargetNamespace("http://services.creditverifier.com/");
         definition.setLocationUri("/ws");
-        definition.setSchema(CreditSchema);
+        definition.setSchema(creditSchema);
         return definition;
     }
 
     @Bean
-    public XsdSchema CreditSchema() {
+    public XsdSchema creditSchema() {
         return new SimpleXsdSchema(new ClassPathResource("xsd/CreditCard.xsd"));
     }
 
