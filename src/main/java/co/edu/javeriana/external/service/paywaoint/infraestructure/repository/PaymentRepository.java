@@ -19,7 +19,7 @@ public class PaymentRepository implements PayRepository {
         try {
             String sql = "SELECT * " +
                          "FROM TC_INFORMATION " +
-                         "WHERE MATCH(TC_NUMBER) AGAINST ( ? )";
+                         "WHERE TC_NUMBER =  ?";
             return template.queryForObject(sql,
                     new Object[]{number},
                     (rs, rowNum) ->
