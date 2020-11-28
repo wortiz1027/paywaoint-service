@@ -19,7 +19,7 @@ RUN mvn clean package -Dmaven.test.skip=true
 FROM adoptopenjdk:11-jre-hotspot
 
 ENV APP_HOME "/app"
-ENV HTTP_PORT 7071
+ENV HTTP_PORT 7075
 
 # Informacion de la persona que mantiene la imagen
 LABEL org.opencontainers.image.created=$BUILD_DATE \

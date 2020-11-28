@@ -33,7 +33,7 @@ services:
           cpus: '0.50'
           memory: 180M
   paywoaint-service:
-    image: equipo5/paywoaint-service:latest
+    image: wortiz1027/paywoaint-service:latest
     container_name: paywoaint-service
     hostname: paywoaint-service
     restart: always
@@ -41,7 +41,7 @@ services:
       - DATABASE_HOST=db_payments
       - DATABASE_PORT=3306
     ports:
-      - 7071:7071
+      - 7075:7075
     networks:
       - ntw_backend
     depends_on:
